@@ -365,9 +365,10 @@
         .steps-grid,
         .benefits-grid,
         .services-grid,
-        .portfolio-grid {
+        .portfolio-grid,
+        .samples-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 32px;
             margin: 48px 0;
         }
@@ -375,7 +376,8 @@
         .step-card,
         .benefit-card,
         .service-card,
-        .portfolio-card {
+        .portfolio-card,
+        .sample-card {
             background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(12px);
             padding: 36px 28px;
@@ -386,9 +388,22 @@
             overflow: hidden;
         }
 
+        .step-card:hover,
+        .benefit-card:hover,
+        .service-card:hover,
+        .sample-card:hover,
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(37, 99, 235, 0.25);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
         .step-card::before,
         .benefit-card::before,
-        .service-card::before {
+        .service-card::before,
+        .sample-card::before,
+        .portfolio-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -404,17 +419,10 @@
 
         .step-card:hover::before,
         .benefit-card:hover::before,
-        .service-card:hover::before {
+        .service-card:hover::before,
+        .sample-card:hover::before,
+        .portfolio-card:hover::before {
             opacity: 1;
-        }
-
-        .step-card:hover,
-        .benefit-card:hover,
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(37, 99, 235, 0.25);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            background: rgba(255, 255, 255, 0.07);
         }
 
         .step-number {
@@ -463,6 +471,87 @@
 
         .service-card p {
             color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== SAMPLE CARD STYLES ===== */
+        .sample-card {
+            padding: 0;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .sample-card .sample-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1a1e24, #2d3748);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sample-card .sample-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s ease;
+        }
+
+        .sample-card:hover .sample-image img {
+            transform: scale(1.05);
+        }
+
+        .sample-card .sample-image .preview-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #60a5fa;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .sample-card .sample-info {
+            padding: 20px 24px 24px;
+        }
+
+        .sample-card .sample-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+            color: #f0f2f5;
+        }
+
+        .sample-card .sample-info .sample-sub {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .sample-card .sample-info p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .sample-card .sample-info .sample-tag {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.15);
+            color: #60a5fa;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 10px;
+            border: 1px solid rgba(37, 99, 235, 0.15);
         }
 
         /* ===== CTA SECTION ===== */
@@ -844,6 +933,15 @@
             .stat-number {
                 font-size: 1.8rem;
             }
+            .samples-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .samples-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -856,6 +954,7 @@
             <div class="nav-links">
                 <a href="#services">Services</a>
                 <a href="#how">How it works</a>
+                <a href="#samples">Samples</a>
                 <a href="#portfolio">Portfolio</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
@@ -979,10 +1078,111 @@
                 </div>
             </div>
 
+            <!-- ===== WEBSITE SAMPLES - NEW SECTION WITH YOUR PROJECTS ===== -->
+            <div id="samples">
+                <div class="section-sub">Design Showcase</div>
+                <h2 class="section-title">Website Samples I've Designed</h2>
+                <div class="samples-grid">
+
+                    <!-- Sample 1: Dabaso Youth Admin Panel -->
+                    <div class="sample-card">
+                        <div class="sample-image" style="background: linear-gradient(135deg, #0f1724, #1a2744);">
+                            <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.8);">
+                                <div style="font-size: 1rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px;">🔐 Admin Panel</div>
+                                <div style="font-size: 0.7rem; opacity: 0.5;">Secure Access • Dabaso Youth</div>
+                                <div style="margin-top: 12px; font-size: 0.6rem; opacity: 0.3; border: 1px solid rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 8px; display: inline-block;">RESTRICTED ACCESS</div>
+                            </div>
+                            <span class="preview-badge">Admin Dashboard</span>
+                        </div>
+                        <div class="sample-info">
+                            <h3>Dabaso Youth Admin Panel</h3>
+                            <div class="sample-sub">🔐 Secure Management System</div>
+                            <p>Complete admin dashboard with user management, member tracking, volunteer coordination, project monitoring, and payment analytics.</p>
+                            <span class="sample-tag">Admin Panel</span>
+                            <span class="sample-tag">Dashboard</span>
+                            <span class="sample-tag">Analytics</span>
+                        </div>
+                    </div>
+
+                    <!-- Sample 2: Green Today Homepage -->
+                    <div class="sample-card">
+                        <div class="sample-image" style="background: linear-gradient(135deg, #0a2e1a, #1a4a2e);">
+                            <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.9);">
+                                <div style="font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px;">🌿 Green Today</div>
+                                <div style="font-size: 0.7rem; opacity: 0.6; letter-spacing: 2px;">Better Tomorrow</div>
+                                <div style="margin-top: 10px; font-size: 0.6rem; opacity: 0.5; max-width: 200px; margin-left: auto; margin-right: auto;">Empowering Communities through Green Solutions</div>
+                                <div style="margin-top: 12px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+                                    <span style="background: rgba(37, 99, 235, 0.3); padding: 2px 12px; border-radius: 20px; font-size: 0.55rem;">Join Us Today</span>
+                                    <span style="background: rgba(255,255,255,0.05); padding: 2px 12px; border-radius: 20px; font-size: 0.55rem;">Explore Projects</span>
+                                </div>
+                            </div>
+                            <span class="preview-badge">Homepage</span>
+                        </div>
+                        <div class="sample-info">
+                            <h3>Green Today — Better Tomorrow</h3>
+                            <div class="sample-sub">🌍 Environmental Conservation NGO</div>
+                            <p>Youth-driven organization homepage with mission focus, community engagement, project showcase, and call-to-action sections for environmental conservation.</p>
+                            <span class="sample-tag">NGO Website</span>
+                            <span class="sample-tag">Environmental</span>
+                            <span class="sample-tag">Community</span>
+                        </div>
+                    </div>
+
+                    <!-- Sample 3: Dabaso Youth Dashboard -->
+                    <div class="sample-card">
+                        <div class="sample-image" style="background: linear-gradient(135deg, #0d1117, #1a2332);">
+                            <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.8); width: 100%;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; opacity: 0.5; margin-bottom: 12px;">
+                                    <span>📊 Dashboard</span>
+                                    <span>👤 Welcome, karisaj</span>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.55rem;">
+                                    <div style="background: rgba(255,255,255,0.03); padding: 6px; border-radius: 6px;">👥 Users <span style="color: #60a5fa;">+12%</span></div>
+                                    <div style="background: rgba(255,255,255,0.03); padding: 6px; border-radius: 6px;">📋 Members <span style="color: #60a5fa;">+8%</span></div>
+                                    <div style="background: rgba(255,255,255,0.03); padding: 6px; border-radius: 6px;">🤝 Volunteers <span style="color: #60a5fa;">+5%</span></div>
+                                    <div style="background: rgba(255,255,255,0.03); padding: 6px; border-radius: 6px;">📁 Projects <span style="color: #60a5fa;">+3%</span></div>
+                                </div>
+                                <div style="margin-top: 8px; font-size: 0.5rem; opacity: 0.3; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;">Monthly Activity • Chart View</div>
+                            </div>
+                            <span class="preview-badge">Analytics Dashboard</span>
+                        </div>
+                        <div class="sample-info">
+                            <h3>Dabaso Youth Dashboard</h3>
+                            <div class="sample-sub">📊 Real-time Analytics & Monitoring</div>
+                            <p>Comprehensive dashboard with key metrics including total users, members, volunteers, projects, payment tracking, and monthly activity charts.</p>
+                            <span class="sample-tag">Dashboard</span>
+                            <span class="sample-tag">Analytics</span>
+                            <span class="sample-tag">Real-time</span>
+                        </div>
+                    </div>
+
+                    <!-- Sample 4: STEVE Holiday Homes -->
+                    <div class="sample-card">
+                        <div class="sample-image" style="background: linear-gradient(135deg, #1a0f0a, #3d281a);">
+                            <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.85);">
+                                <div style="font-size: 1.2rem; font-weight: 700; letter-spacing: 1px;">🏖️ STEVE</div>
+                                <div style="font-size: 0.8rem; font-weight: 300; opacity: 0.7;">Holiday Homes</div>
+                                <div style="margin-top: 10px; font-size: 0.55rem; opacity: 0.4; max-width: 200px; margin-left: auto; margin-right: auto;">Luxurious stays in Watamu • Comfort • Elegance • Nature</div>
+                            </div>
+                            <span class="preview-badge">Booking Site</span>
+                        </div>
+                        <div class="sample-info">
+                            <h3>STEVE Holiday Homes</h3>
+                            <div class="sample-sub">🏖️ Luxury Vacation Rentals</div>
+                            <p>Elegant holiday home website showcasing luxurious stays in Watamu with a focus on comfort, elegance, and nature for an unforgettable vacation experience.</p>
+                            <span class="sample-tag">Travel</span>
+                            <span class="sample-tag">Luxury</span>
+                            <span class="sample-tag">Booking</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
             <!-- ===== PORTFOLIO ===== -->
             <div id="portfolio">
-                <div class="section-sub">Recent work</div>
-                <h2 class="section-title">Projects built by JK Solutions</h2>
+                <div class="section-sub">Recent Work</div>
+                <h2 class="section-title">Projects Built by JK Solutions</h2>
                 <div class="portfolio-grid">
                     <div class="portfolio-card">
                         <div style="font-size: 3.2rem; margin-bottom: 16px;">🏖️</div>
@@ -1082,12 +1282,11 @@
                 </div>
             </div>
 
-            <!-- ===== CONTACT FORM - FIXED WITH CORRECT FORMSPREE ENDPOINT ===== -->
+            <!-- ===== CONTACT FORM ===== -->
             <div id="contact">
                 <div class="section-sub">Get in touch</div>
                 <h2 class="section-title">Send us a message</h2>
                 <div class="contact-form-section">
-                    <!-- IMPORTANT: form has NO action attribute - JavaScript handles submission -->
                     <form id="contactForm">
                         <div class="form-row">
                             <div class="form-group">
@@ -1107,30 +1306,20 @@
                             <label for="message">Your Message</label>
                             <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
                         </div>
-
-                        <!-- Honeypot spam protection -->
                         <input type="text" name="_gotcha" style="display:none;">
-
                         <button type="submit" class="btn-primary" id="submitBtn" style="width: 100%;">
                             <span class="btn-text">📤 Send Message</span>
                             <span class="spinner"></span>
                         </button>
-
-                        <div id="formSuccess" class="form-success">
-                            ✅ Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
-                        </div>
-                        <div id="formError" class="form-error">
-                            ❌ Oops! Something went wrong. Please try again or contact us directly on WhatsApp.
-                        </div>
+                        <div id="formSuccess" class="form-success">✅ Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.</div>
+                        <div id="formError" class="form-error">❌ Oops! Something went wrong. Please try again or contact us directly on WhatsApp.</div>
                     </form>
 
-                    <!-- WhatsApp Button -->
                     <div style="text-align: center; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06);">
                         <p style="color: rgba(255,255,255,0.5); margin-bottom: 16px;">Or reach us instantly via WhatsApp</p>
                         <a href="https://wa.me/254758131100?text=Hello%20JK%20Solutions%2C%20I%27m%20interested%20in%20getting%20a%20website%20for%20my%20business."
-                           target="_blank"
-                           class="whatsapp-btn">
-                            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                           target="_blank" class="whatsapp-btn">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                             Chat on WhatsApp
                         </a>
                     </div>
@@ -1144,9 +1333,7 @@
                 <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
                     <a href="#contact" class="btn-primary">📅 Get free consultation →</a>
                     <a href="https://wa.me/254758131100?text=Hello%20JK%20Solutions%2C%20I%27m%20interested%20in%20getting%20a%20website."
-                       target="_blank"
-                       class="whatsapp-btn"
-                       style="padding: 14px 28px; font-size: 0.95rem;">
+                       target="_blank" class="whatsapp-btn" style="padding: 14px 28px; font-size: 0.95rem;">
                         💬 WhatsApp
                     </a>
                 </div>
@@ -1191,6 +1378,7 @@
             <div class="footer-links">
                 <a href="#services">Services</a>
                 <a href="#how">Process</a>
+                <a href="#samples">Samples</a>
                 <a href="#portfolio">Portfolio</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
@@ -1207,52 +1395,34 @@
     </footer>
 
     <script>
-        // ===== CONTACT FORM - FIXED: Uses Formspree endpoint with proper headers =====
+        // ===== CONTACT FORM =====
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-
             const submitBtn = document.getElementById('submitBtn');
             const successDiv = document.getElementById('formSuccess');
             const errorDiv = document.getElementById('formError');
-
-            // Hide previous messages
             successDiv.classList.remove('show');
             errorDiv.classList.remove('show');
-
-            // Show loading state
             submitBtn.classList.add('loading');
             submitBtn.disabled = true;
-
-            // Get form data
             const formData = new FormData(this);
-
             try {
-                // IMPORTANT: Using your exact Formspree endpoint with proper Accept header
                 const response = await fetch('https://formspree.io/f/mnpqazkl', {
                     method: 'POST',
                     body: formData,
-                    headers: {
-                        'Accept': 'application/json' // THIS HEADER IS REQUIRED
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
-
                 if (response.ok) {
                     successDiv.classList.add('show');
                     this.reset();
                 } else {
-                    const errorData = await response.json();
-                    console.error('Formspree Error:', errorData);
-                    errorDiv.textContent = '❌ Error: ' + (errorData.error || 'Something went wrong. Please try again.');
                     errorDiv.classList.add('show');
                 }
             } catch (error) {
-                console.error('Network Error:', error);
-                errorDiv.textContent = '❌ Network error. Please check your connection and try again.';
                 errorDiv.classList.add('show');
             } finally {
                 submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
-
                 setTimeout(() => {
                     successDiv.classList.remove('show');
                     errorDiv.classList.remove('show');
@@ -1264,19 +1434,10 @@
         document.getElementById('brochureBtn').addEventListener('click', function() {
             const content = `
             <html>
-            <head>
-                <style>
-                    body { font-family: Arial, sans-serif; padding: 40px; max-width: 800px; margin: 0 auto; }
-                    h1 { color: #2563eb; font-size: 2.5rem; }
-                    h2 { color: #1a1e24; margin-top: 30px; border-bottom: 2px solid #2563eb; padding-bottom: 10px; }
-                    ul { line-height: 2; }
-                    .footer { margin-top: 50px; text-align: center; color: #666; border-top: 1px solid #ddd; padding-top: 20px; }
-                </style>
-            </head>
+            <head><style>body{font-family:Arial,sans-serif;padding:40px;max-width:800px;margin:0 auto}h1{color:#2563eb;font-size:2.5rem}h2{color:#1a1e24;margin-top:30px;border-bottom:2px solid #2563eb;padding-bottom:10px}ul{line-height:2}.footer{margin-top:50px;text-align:center;color:#666;border-top:1px solid #ddd;padding-top:20px}</style></head>
             <body>
                 <h1>JK Solutions</h1>
-                <p style="font-size: 1.2rem; color: #555;">Web Development & ICT Services — Nairobi, Kenya</p>
-                <hr>
+                <p style="font-size:1.2rem;color:#555;">Web Development & ICT Services — Nairobi, Kenya</p><hr>
                 <h2>About Us</h2>
                 <p>JK Solutions is a modern web development agency led by Karisa Anderson Juma. We specialize in creating fast, mobile-friendly, and visually stunning websites for businesses, travel companies, and startups.</p>
                 <h2>Our Services</h2>
@@ -1301,7 +1462,6 @@
                 <div class="footer"><p>© 2026 JK Solutions — Modern Websites. Smart Solutions. Real Results.</p></div>
             </body>
             </html>`;
-
             const blob = new Blob([content], { type: 'text/html' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -1335,7 +1495,6 @@
                 }
             });
         }, { threshold: 0.3 });
-
         document.querySelectorAll('.skill-fill').forEach(fill => observer.observe(fill));
     </script>
 </body>
